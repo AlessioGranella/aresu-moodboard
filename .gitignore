@@ -2,3 +2,5 @@
 font/Loew-*.otf
 .DS_Store
 _site/
+# Prove di composizione: restano in locale.
+prove-sfondo/
