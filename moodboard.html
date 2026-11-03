@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Moodboard shooting · Formaggi Aresu</title>
+<!--
+  COME AGGIUNGERE UNA REFERENCE
+  1. Copia l'immagine in questa cartella (Moodboard shooting/).
+  2. Aggiungi una riga in REFERENCE (in fondo al file): nome file, famiglia, nota.
+  3. Per una famiglia nuova, aggiungila in FAMIGLIE con titolo e descrizione.
+  Token e font: design system Aresu (../design-system/). Loew è commerciale: resta in locale (.gitignore); online i titoli vanno in Montserrat.
+-->
+<style>
+  @font-face { font-family: 'Loew'; font-weight: 300; src: url('font/Loew-Light.otf') format('opentype'); }
+  @font-face { font-family: 'Loew'; font-weight: 700; src: url('font/Loew-Bold.otf') format('opentype'); }
+  @font-face { font-family: 'Loew'; font-weight: 900; src: url('font/Loew-Black.otf') format('opentype'); }
+  @font-face { font-family: 'Montserrat'; font-weight: 100 900; font-display: swap; src: url('font/Montserrat.ttf') format('truetype'); }
+  @font-face { font-family: 'Questrial'; font-weight: 400; src: url('font/Questrial-Regular.ttf') format('truetype'); }
+
+  :root {
+    --ar-bianco: #FFFFFF; --ar-panna: #F5EBE6; --ar-sabbia: #DFCFC0;
+    --ar-arancio: #C6733C; --ar-marrone: #945830; --ar-cacao: #563F2D;
+
+    --ar-bg: var(--ar-panna);
+    --ar-bg-soft: var(--ar-sabbia);
+    --ar-bg-deep: var(--ar-cacao);
+    --ar-fg: var(--ar-cacao);
+    --ar-fg-title: var(--ar-marrone);
+    --ar-fg-accent: var(--ar-arancio);
+    --ar-fg-muted: color-mix(in srgb, var(--ar-cacao) 72%, var(--ar-panna));
+    --ar-on-dark: var(--ar-panna);
+    --ar-on-dark-muted: color-mix(in srgb, var(--ar-panna) 75%, transparent);
+    --ar-border: color-mix(in srgb, var(--ar-sabbia) 80%, var(--ar-cacao));
+
+    --ar-font-titoli: 'Loew', 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+    --ar-font-testo: 'Questrial', 'Helvetica Neue', Arial, sans-serif;
+    --ar-fs-h1: clamp(2.25rem, 3vw + 1rem, 3.5rem);
+    --ar-fs-h2: clamp(1.75rem, 2vw + 1rem, 2.5rem);
+    --ar-fs-lead: 1.25rem;
+    --ar-fs-body: 1.0625rem;
+    --ar-fs-small: 0.9375rem;
+    --ar-fs-label: 0.8125rem;
+    --ar-ls-label: 0.18em;
+    --ar-ls-title: 0.04em;
+
+    --ar-container: 1200px;
+    --ar-gutter: clamp(16px, 4vw, 48px);
+    --ar-radius-sm: 2px;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--ar-bg); color: var(--ar-fg);
+    font-family: var(--ar-font-testo); font-size: var(--ar-fs-body); line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 { font-family: var(--ar-font-titoli); color: var(--ar-fg-title); line-height: 1.2; margin: 0 0 16px; }
+  h1 { font-size: var(--ar-fs-h1); font-weight: 900; text-transform: uppercase; letter-spacing: var(--ar-ls-title); line-height: 1.1; }
+  h2 { font-size: var(--ar-fs-h2); font-weight: 700; }
+  h3 { font-size: 1.1875rem; font-weight: 700; }
+  p { margin: 0 0 16px; max-width: 68ch; }
+
+  .etichetta {
+    display: inline-block; font-family: var(--ar-font-titoli); font-weight: 700;
+    font-size: var(--ar-fs-label); text-transform: uppercase; letter-spacing: var(--ar-ls-label);
+    color: var(--ar-fg-accent); margin-bottom: 12px;
+  }
+
+  .fascia { padding: 80px 0; }
+  .fascia__inner { max-width: var(--ar-container); margin: 0 auto; padding: 0 var(--ar-gutter); }
+  .fascia--sabbia { background: var(--ar-bg-soft); }
+  .fascia--cacao { background: var(--ar-bg-deep); color: var(--ar-on-dark); }
+  .fascia--cacao h2, .fascia--cacao h3 { color: var(--ar-on-dark); }
+  .fascia--cacao p, .fascia--cacao li { color: var(--ar-on-dark-muted); }
+
+  /* Testata */
+  .testata { padding: 64px 0 80px; }
+  .sigillo { width: 96px; height: 96px; display: block; margin-bottom: 48px; }
+  .testata .lead { font-size: var(--ar-fs-lead); line-height: 1.5; }
+  .meta { display: flex; flex-wrap: wrap; gap: 8px 32px; margin-top: 32px; font-size: var(--ar-fs-small); color: var(--ar-fg-muted); }
+  .meta b { font-family: var(--ar-font-titoli); font-weight: 700; color: var(--ar-fg); }
+
+  /* Direzione */
+  .regole { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 40px 32px; margin-top: 48px; }
+  .regole h3 { margin-bottom: 8px; }
+  .regole p { font-size: var(--ar-fs-small); margin: 0; }
+  .palette { display: flex; gap: 8px; margin-top: 12px; }
+  .palette span { width: 32px; height: 32px; border-radius: 50%; border: 1px solid color-mix(in srgb, var(--ar-panna) 30%, transparent); }
+
+  /* Famiglie */
+  .famiglia + .famiglia { border-top: 1px solid var(--ar-border); }
+  .famiglia__testa { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 48px; align-items: start; margin-bottom: 48px; }
+  .famiglia__testa .num { font-family: var(--ar-font-titoli); font-weight: 300; font-size: 4rem; line-height: 1; color: var(--ar-fg-accent); display: block; margin-bottom: 16px; }
+  .scheda { display: grid; grid-template-columns: max-content 1fr; gap: 8px 24px; margin: 0; font-size: var(--ar-fs-small); }
+  .scheda dt { font-family: var(--ar-font-titoli); font-weight: 700; text-transform: uppercase; letter-spacing: var(--ar-ls-label); font-size: var(--ar-fs-label); color: var(--ar-fg-title); padding-top: 2px; }
+  .scheda dd { margin: 0; }
+
+  .griglia { columns: 3 280px; column-gap: 24px; }
+  .ref { break-inside: avoid; margin: 0 0 32px; }
+  .ref button { all: unset; display: block; width: 100%; cursor: zoom-in; border-radius: var(--ar-radius-sm); overflow: hidden; background: var(--ar-sabbia); }
+  .ref button:focus-visible { outline: 2px solid var(--ar-arancio); outline-offset: 3px; }
+  .ref img { display: block; width: 100%; height: auto; transition: transform .5s ease; }
+  .ref button:hover img { transform: scale(1.02); }
+  .ref figcaption { margin-top: 12px; font-size: var(--ar-fs-small); line-height: 1.5; }
+  .ref figcaption .etichetta { margin: 0 8px 0 0; }
+
+  /* Evitare */
+  .evitare { list-style: none; padding: 0; margin: 32px 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px 40px; }
+  .evitare li { padding-left: 24px; position: relative; }
+  .evitare li::before { content: ''; position: absolute; left: 0; top: .7em; width: 12px; height: 1px; background: var(--ar-arancio); }
+
+  footer { padding: 48px 0; font-size: var(--ar-fs-small); color: var(--ar-fg-muted); }
+
+  /* Ingrandimento */
+  dialog { border: 0; padding: 0; background: transparent; max-width: 100vw; max-height: 100vh; }
+  dialog::backdrop { background: color-mix(in srgb, var(--ar-cacao) 94%, transparent); }
+  .lb { display: flex; flex-direction: column; align-items: center; gap: 16px; padding: 24px; }
+  .lb img { max-width: 92vw; max-height: 80vh; object-fit: contain; }
+  .lb p { color: var(--ar-on-dark); text-align: center; margin: 0; max-width: 60ch; }
+  .lb .chiudi { all: unset; cursor: pointer; font-family: var(--ar-font-titoli); font-weight: 700; font-size: var(--ar-fs-label); letter-spacing: var(--ar-ls-label); text-transform: uppercase; color: var(--ar-on-dark-muted); }
+  .lb .chiudi:hover, .lb .chiudi:focus-visible { color: var(--ar-on-dark); }
+
+  @media (max-width: 760px) {
+    .fascia { padding: 56px 0; }
+    .famiglia__testa { grid-template-columns: 1fr; gap: 24px; }
+    .scheda { grid-template-columns: 1fr; gap: 2px; }
+    .scheda dd { margin-bottom: 12px; }
+  }
+  @media print {
+    .fascia { padding: 32px 0; }
+    .ref { page-break-inside: avoid; }
+    dialog { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="fascia testata">
+  <div class="fascia__inner">
+    <img class="sigillo" src="brand/sigillo-linea-marrone.svg" alt="Formaggi Aresu 1938">
+    <span class="etichetta">Moodboard shooting</span>
+    <h1>Ambientazioni, persone, prodotto</h1>
+    <p class="lead">Le reference per lo shooting di Formaggi Aresu e il tipo di fotografia che cerchiamo per ognuna delle tre famiglie di scatti. Le immagini sono riferimenti di luce, taglio e atmosfera, non scatti da copiare.</p>
+    <div class="meta">
+      <span><b>Cliente</b> Formaggi Aresu, Donori</span>
+      <span><b>Agenzia</b> DROP</span>
+      <span><b>Reference</b> <span id="conteggio"></span></span>
+    </div>
+  </div>
+</header>
+
+<section class="fascia fascia--cacao">
+  <div class="fascia__inner">
+    <span class="etichetta">Direzione generale</span>
+    <h2>Elegante, minimale, nei toni caldi del brand</h2>
+    <p>Fotografia sobria e curata, con poche cose in scena e ognuna scelta. Persone vere del caseificio, i loro luoghi, i formaggi. Il formaggio resta il centro della scena, anche nei ritratti. La palette delle foto è quella del marchio, presa dalle croste: panna, sabbia, arancio, marrone, cacao.</p>
+    <div class="regole">
+      <div>
+        <h3>Minimale</h3>
+        <p>Un soggetto per scatto, fondi puliti, molta aria intorno. Pochi oggetti di scena e solo materiali naturali: legno, pietra, lino.</p>
+      </div>
+      <div>
+        <h3>Luce</h3>
+        <p>Una sola fonte, calda e radente: finestra, porta della cella, lampada bassa. Ombre profonde ma con dettaglio. Mai flash frontale, mai luce fredda.</p>
+      </div>
+      <div>
+        <h3>Colore</h3>
+        <p>Toni di crosta: ambra, miele, terra, nocciola. Neri morbidi che tendono al cacao, bianchi caldi.</p>
+        <div class="palette" aria-hidden="true">
+          <span style="background:var(--ar-panna)"></span><span style="background:var(--ar-sabbia)"></span><span style="background:var(--ar-arancio)"></span><span style="background:var(--ar-marrone)"></span><span style="background:var(--ar-cacao)"></span>
+        </div>
+      </div>
+      <div>
+        <h3>Persone</h3>
+        <p>In divisa da lavoro (casacca, grembiule), non in posa da catalogo. Sguardi in camera alternati a momenti rubati durante il lavoro.</p>
+      </div>
+      <div>
+        <h3>Profondità</h3>
+        <p>Diaframmi aperti, primi piani sfocati, scaffali che fuggono in prospettiva. La cella si legge anche quando è fuori fuoco.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<main id="famiglie"></main>
+
+<section class="fascia fascia--sabbia">
+  <div class="fascia__inner">
+    <span class="etichetta">Da evitare</span>
+    <h2>Cosa non vogliamo</h2>
+    <ul class="evitare">
+      <li>Luce fredda o neon, dominanti verdi o blu.</li>
+      <li>Set da stock: sorrisi forzati, ambienti finti, tagliere con uva e noci.</li>
+      <li>Fondi bianchi piatti nello still life ambientato (il bianco resta per le schede prodotto scontornate).</li>
+      <li>Filtri vintage, vignettature pesanti, saturazione spinta.</li>
+      <li>Immagini generate con l'AI spacciate per foto di prodotto.</li>
+      <li>Packaging e marchi di altri in scena.</li>
+    </ul>
+  </div>
+</section>
+
+<footer class="fascia__inner">Formaggi Aresu · Moodboard shooting · DROP</footer>
+
+<dialog id="lb" aria-label="Reference ingrandita">
+  <div class="lb">
+    <img alt="">
+    <p></p>
+    <button class="chiudi" type="button">Chiudi</button>
+  </div>
+</dialog>
+
+<script>
+  // Famiglie di scatti. «scheda» compare accanto al titolo: aggiungi o togli voci liberamente.
+  const FAMIGLIE = [
+    {
+      id: 'ambientazioni',
+      titolo: 'Ambientazioni',
+      testo: 'I luoghi del caseificio, a partire dalla cella di stagionatura: le forme sulle assi di legno, la penombra, la ripetizione ordinata. Inquadrature pulite e ordinate, che raccontano il tempo e la pazienza e fanno da sfondo alle altre due famiglie.',
+      scheda: {
+        Luce: 'Quella della cella, eventualmente rinforzata con una sola fonte calda bassa.',
+        Taglio: 'Composizioni ordinate e simmetriche, corridoi in prospettiva, primi piani di forme sfocate per dare profondità.',
+        Ottica: '24–35 mm per gli ambienti, 50 mm per i dettagli.',
+        Note: 'Utili anche come fondo per testi (sito, social): lasciare scatti con zone calme e vuote.'
+      }
+    },
+    {
+      id: 'persone',
+      titolo: 'Persone',
+      testo: 'Chi fa il formaggio, nel posto dove lo fa. Ritratti ambientati della famiglia e dei casari, dai più anziani ai più giovani, e il lavoro raccontato dalle mani: girare una forma, legare il panno della ricotta, tagliare. Aresu fa formaggio dal 1938 e questo si deve vedere.',
+      scheda: {
+        Luce: 'Laterale, da finestra o dalla porta della cella. Volto a tre quarti, fondo che scende nel buio. Radente sulle mani, per la grana di crosta e pelle.',
+        Taglio: 'Ritratti a mezzo busto o figura intera, verticali, soggetto decentrato. Mani in taglio stretto su fondi scuri.',
+        Ottica: '35–50 mm per i ritratti, 85 mm o macro 100 mm per le mani.',
+        Note: 'Divisa da lavoro pulita e uguale per tutti. Sempre un formaggio in mano o vicino. Alternare sguardo in camera e momenti di lavoro.'
+      }
+    },
+    {
+      id: 'prodotto',
+      titolo: 'Prodotto',
+      testo: 'Still life dei formaggi Aresu, interi e al taglio. Composizioni semplici su fondi caldi tinta unita, vicini al panna e al sabbia del marchio: la crosta e la pasta parlano da sole.',
+      scheda: {
+        Luce: 'Morbida, laterale, con ombra leggera e direzionale. Niente luce piatta da catalogo.',
+        Taglio: 'Verticale e quadrato per i social, orizzontale per il sito. Molta aria intorno.',
+        Fondi: 'Carta o lino nei toni panna, sabbia, nocciola. Pietra e legno come appoggi.',
+        Note: 'Pochi props e solo naturali (pietra, lino, coltello da formaggio). Prevedere anche scatti su bianco per lo scontorno.'
+      }
+    }
+  ];
+
+  // Reference. Per aggiungerne una: file nella cartella + una riga qui.
+  const REFERENCE = [
+    { file: '85916d3ac73429ce72fa810022aca883.jpg', famiglia: 'persone', nota: 'Casara anziana che controlla una forma in cella. Luce radente da sinistra, scaffali sfocati ai lati: esperienza e generazioni.' },
+    { file: 'de2c9f844ab4e320818f0bcdd74d0d9c.jpg', famiglia: 'persone', nota: 'Ritratto frontale con la forma tra le mani, sguardo in camera, corridoio di scaffali in fuga dietro. Il ritratto «ufficiale».' },
+    { file: '86e13857271d6f8ad0b44a9a1afe58d1.jpg', famiglia: 'persone', nota: 'Al lavoro tra le forme, non in posa. Momento di reportage, primo piano di forme fuori fuoco.' },
+    { file: '3f2b89131fe99516818382d45171e6f1.jpg', famiglia: 'persone', nota: 'Ritratto seduto, sorriso spontaneo, grembiule. Luce da finestra e fondo di legno scuro.' },
+    { file: 'b882bf8a40ed7375cae80a8485d2301c.jpg', famiglia: 'persone', nota: 'Ritratto ambientato in piedi, rilassato, appoggiato al bancone. Tono familiare e accogliente.' },
+
+    { file: '1241fdb45c0664d9b4947ece72cd73ca.jpg', famiglia: 'ambientazioni', nota: 'Le forme sulle assi in penombra, primo piano sfocato. Una sola luce calda, profondità data dal fuori fuoco.' },
+    { file: '7e348feb1441fc73485de6e30a171121.jpg', famiglia: 'ambientazioni', nota: 'Mani che prendono una forma dallo scaffale. Quasi in soggettiva: chi guarda è dentro la cella.' },
+
+    { file: 'bb67027cca0f2f6ab3ca23e79c9dfbeb.jpg', famiglia: 'persone', nota: 'La forma tenuta con due mani su fondo scuro. La crosta è protagonista, il resto sparisce.' },
+    { file: 'e001cf5515406d959f7d6da7549ade30.jpg', famiglia: 'persone', nota: 'Il panno della ricotta legato a mano. Luce calda radente sulla pasta fresca: riferimento per i freschi.' },
+    { file: 'd14e6153d919e27069cf37a938685ee6.jpg', famiglia: 'persone', nota: 'Taglio a cubetti, mani e coltello su fondo scuro. Il gesto quotidiano, dall’alto e di lato.' },
+
+    { file: '4fa45d6888b7fc88204f4ecfe9ebe977.jpg', famiglia: 'prodotto', nota: 'Una mano porge lo spicchio su fondo sabbia tinta unita. Crosta e pasta insieme, gesto essenziale.' },
+    { file: 'ca741e6a5dc88c97078b3672c8221aa5.jpg', famiglia: 'prodotto', nota: 'La famiglia di formaggi su tovaglia di lino, fondo caldo pieno. Composizione bassa, orizzontale, luce laterale morbida.' },
+    { file: 'f08b810c703408da0d3cd9775feef99d.jpg', famiglia: 'prodotto', nota: 'Formaggi impilati come una scultura su fondo sabbia, ombra morbida. Riferimento per le texture delle croste.' },
+    { file: 'faa7985e459172b808b320d014ef8c17.jpg', famiglia: 'prodotto', nota: 'Pila di stagionati su pietra, fondo panna, coltello e ulivo come unici props. Riferimento di composizione (la scritta in alto non fa parte del riferimento).' }
+  ];
+
+  const main = document.getElementById('famiglie');
+  document.getElementById('conteggio').textContent = REFERENCE.length + ' immagini';
+
+  FAMIGLIE.forEach((f, i) => {
+    const refs = REFERENCE.filter(r => r.famiglia === f.id);
+    const sez = document.createElement('section');
+    sez.className = 'fascia famiglia';
+    sez.id = f.id;
+    sez.innerHTML = `
+      <div class="fascia__inner">
+        <div class="famiglia__testa">
+          <div>
+            <span class="num">${String(i + 1).padStart(2, '0')}</span>
+            <h2>${f.titolo}</h2>
+            <p>${f.testo}</p>
+          </div>
+          <dl class="scheda">${Object.entries(f.scheda).map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join('')}</dl>
+        </div>
+        <div class="griglia">${refs.map((r, j) => `
+          <figure class="ref">
+            <button type="button" data-file="${r.file}" data-nota="${r.nota.replace(/"/g, '&quot;')}" aria-label="Ingrandisci reference ${i + 1}.${j + 1}">
+              <img src="${encodeURI(r.file)}" alt="${r.nota.replace(/"/g, '&quot;')}" loading="lazy">
+            </button>
+            <figcaption><span class="etichetta">${i + 1}.${j + 1}</span>${r.nota}</figcaption>
+          </figure>`).join('')}
+        </div>
+      </div>`;
+    main.appendChild(sez);
+  });
+
+  const lb = document.getElementById('lb');
+  main.addEventListener('click', e => {
+    const b = e.target.closest('button[data-file]');
+    if (!b) return;
+    lb.querySelector('img').src = encodeURI(b.dataset.file);
+    lb.querySelector('img').alt = b.dataset.nota;
+    lb.querySelector('p').textContent = b.dataset.nota;
+    lb.showModal();
+  });
+  lb.addEventListener('click', e => { if (e.target === lb || e.target.closest('.chiudi')) lb.close(); });
+</script>
+</body>
+</html>

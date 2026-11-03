@@ -1,0 +1,4 @@
+# Loew è un carattere commerciale: resta solo in locale, non si pubblica.
+font/Loew-*.otf
+.DS_Store
+_site/
